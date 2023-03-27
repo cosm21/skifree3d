@@ -1,0 +1,42 @@
+SkiFree3D
+
+Moscalu Cosmin-Andrei
+
+Descriere generala:
+    SkiFree este un joc in care controlezi un schior pe o partie cu scopul de
+    aduna cat mai multe puncte. SkiFree3D este o implementare 3D a aceluiasi joc
+    folosind framework-ul gfx-framework pus la dispozitie de departamentul de
+    grafica pe calculatoare al Universitatii Politehnica din Bucuresti.
+    
+Fisiere:
+    src/lab_m1/skifree3d/skifree3d.c - contin implementarea efectiva a jocului
+    src/lab_m1/skifree3d/skifree3d.h
+    src/lab_m1/skifree3d/meshes      - mesh-uri suplimentare care nu se gasesc
+                                        in framework
+    src/lab_m1/skifree3d/shaders     - shader-ele folosite pentru a realiza
+                                        iluminarea
+    src/lab_m1/skifree3d/textures    - texturi folosite pentru obiecte si jucator
+
+Descrierea implementarii:
+    Pentru a realiza efectul de miscare se genereaza un plan care se misca in
+    tandem cu jucatorul, coordonatele texturii acestui plan sunt deplasate in
+    vertex shader cu distanta pe care o parcurge jucatorul, in directia opusa,
+    astfel se creeaza iluzia miscarii.
+ 
+    Obiectele sunt generate folosind un vector care reprezinta directia
+    jucatorului rotit cu un unghi generat la intamplare, apoi, folosind acest
+    vector, obiectul este generat in fata jucatorului pe aceasta directie la o
+    distanta constanta. Astfel, obiectele dispar in afara campului de vedere al
+    jucatorului si apar tot in afara campului in asa fel incat jucatorul este
+    nevoit sa le evite. Coliziunea dintre obiecte si jucator este implementata
+    folosind aproximari de tip sfera-sfera.
+
+Compilare si Rulare:
+    mkdir build
+    cd build
+    cmake ..
+    make
+    cd ..
+
+    Executabilul se va gasi in build/bin/Debug/GFXFramework.
+    Mai multe detalii despre framework in FRAMEWORK_README.md.
